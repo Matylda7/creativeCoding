@@ -1,16 +1,23 @@
 let data;
 let rawData = [];
+let charts = [];
 
 function preload(){
     data = loadTable('data/population.csv', 'csv', 'header')
 }
 
 function setup(){
+    createCanvas(400,400);
     cleanData();
+    noLoop();
+    charts.push(new BarChart(rawData,50,450,(255,255,255),10,400,60));
 
 }
 function draw(){
-    
+    background(245,34,15);
+    charts.forEach(chart => {
+        chart.renderAxis();
+    });
 }
 
 function cleanData(){
