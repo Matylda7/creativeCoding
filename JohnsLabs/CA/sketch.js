@@ -7,11 +7,13 @@ function preload(){
 }
 
 function setup(){
-    createCanvas(800,800);
+    createCanvas(900,900);
     cleanData();
     noLoop();
     //creating a BarChart object with these parameters and putting it in an array called charts
     charts.push(new BarChart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 50, 450));
+
+    charts.push(new HorizontalBarchart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 500, 450));
 
 }
 function draw(){
