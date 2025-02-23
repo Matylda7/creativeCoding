@@ -7,16 +7,21 @@ function preload(){
 }
 
 function setup(){
-    createCanvas(400,400);
+    createCanvas(800,800);
     cleanData();
     noLoop();
-    charts.push(new BarChart(rawData,50,450,(255,255,255),10,400,60));
+    //creating a BarChart object with these parameters and putting it in an array called charts
+    charts.push(new BarChart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 50, 450));
 
 }
 function draw(){
     background(245,34,15);
+    //takes each barchart in the charts array and renders it piece by piece on the canvas
     charts.forEach(chart => {
+        chart.renderBars();
         chart.renderAxis();
+        chart.renderLabels();
+        chart.renderTicks();
     });
 }
 
