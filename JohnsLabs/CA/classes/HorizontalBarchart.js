@@ -27,12 +27,12 @@ class HorizontalBarchart {
         push()
             translate(this.chartPosX, this.chartPosY)
             push()
-            translate(this.margin, 0)
+            
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
                 fill(this.barColour);
                 
-                rect(xPos,0,this.barWidth, -this.data[i][this.yValue]*this.scaler)
+                rect(0,xPos,this.data[i][this.yValue]*this.scaler,this.barWidth )
             }
 
             pop()
@@ -44,7 +44,7 @@ class HorizontalBarchart {
             noFill();
             stroke(this.axisColour);
             strokeWeight(this.axisThickness)
-            line (0,0,0, -this.chartHeight)
+            line (0,0,0, this.chartHeight)
             line (0,0, this.chartWidth,0)
         pop()
     }
