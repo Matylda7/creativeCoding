@@ -1,9 +1,11 @@
+// how to only select half of the rows in the csv file
+
 let data;
 let rawData = [];
 let charts = [];
 
 function preload(){
-    data = loadTable('data/population.csv', 'csv', 'header')
+    data = loadTable('data/Population.csv', 'csv', 'header')
 }
 
 function setup(){
@@ -11,9 +13,11 @@ function setup(){
     cleanData();
     noLoop();
     //creating a BarChart object with these parameters and putting it in an array called charts
-    charts.push(new BarChart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 50, 450));
+    charts.push(new BarChart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 50, 410));
 
     charts.push(new HorizontalBarchart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 500, 450));
+    charts.push(new StackedBarchart(rawData, "County", "Population_number","Year", 400, 400, 10, 15, 2, 50, 850));
+    charts.push(new ClusterChart(rawData, "County", "Population_number","Year", 400, 400, 10, 15, 2, 50, 850));
 
 }
 function draw(){
@@ -37,6 +41,13 @@ function cleanData(){
     for (let i=0; i<rawData.length; i++){
         rawData[i].Year = parseInt(rawData[i].Year)
         rawData[i].Population_number = parseInt(rawData[i].Population_number)
+    }
+
+    for (let i=0; i<rawData.length; i++){
+        rawData[i].Year = parseInt(rawData[i].Year)
+        rawData[i].Population_number = parseInt(rawData[i].Population_number)
+        // rawData[i].Female_25 = parseInt(rawData[i].Female_25)
+        // rawData[i].Male_25 = parseInt(rawData[i].Male_25)
     }
 
 }

@@ -27,12 +27,12 @@ class HorizontalBarchart {
         push()
             translate(this.chartPosX, this.chartPosY)
             push()
-            translate(0,this.margin)
+            translate(0,-this.margin)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
                 fill(this.barColour);
                 
-                rect(0,xPos,this.data[i][this.yValue]*this.scaler,this.barWidth )
+                rect(0,-xPos,this.data[i][this.yValue]*this.scaler,this.barWidth )
             }
 
             pop()
@@ -44,8 +44,8 @@ class HorizontalBarchart {
             noFill();
             stroke(this.axisColour);
             strokeWeight(this.axisThickness)
-            line (0,0,0, this.chartHeight)
-            line (0,0, this.chartWidth,0)
+            line (0,0,0, -this.chartHeight)
+            line (this.chartWidth,0,0,0)
         pop()
     }
     renderLabels(){
@@ -54,7 +54,7 @@ class HorizontalBarchart {
            
             push()
             
-            translate(this.margin, 0)
+            translate(0, -this.margin)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
               
@@ -64,7 +64,7 @@ class HorizontalBarchart {
                 textSize(8);
 
                 push()
-                    translate(-23,xPos + (this.barWidth/2)+this.margin)
+                    translate(-10,-xPos + (this.barWidth/2))
                     rotate(50)
                     text(this.data[i][this.xValue],0,0);
                 pop()
@@ -82,7 +82,7 @@ class HorizontalBarchart {
             strokeWeight(this.axisTickThickness)
             let tickIncrement = this.chartHeight/this.numTicks;
             for (let i = 0; i <= this.numTicks; i++){
-                line(tickIncrement*i,0,tickIncrement*i,-this.tickLength);
+                line(tickIncrement*i,0,tickIncrement*i,this.tickLength);
             }
 
         pop()

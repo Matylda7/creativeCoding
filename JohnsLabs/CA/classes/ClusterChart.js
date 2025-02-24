@@ -1,9 +1,8 @@
-class StackedBarchart{
-    constructor(_data, _xValue, _yValue,_yValue2, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY){
+class BarChart {
+    constructor(_data, _xValue, _yValue, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY){
         this.data = _data;
         this.xValue = _xValue;
         this.yValue = _yValue;
-        this.yValue2 = _yValue2;
         this.chartHeight = _chartHeight;
         this.chartWidth = _chartWidth;
         this.barWidth = _barWidth;
@@ -12,18 +11,15 @@ class StackedBarchart{
         this.axisTickThickness = 1;
         this.chartPosX = _chartPosX;
         this.chartPosY = _chartPosY;
-        this.yValueTotal = "Total"
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin*2))/(this.data.length-1);
-        this.scaler = this.chartHeight/(max(rawData.map(row => row[this.yValueTotal])));
+        this.scaler = this.chartHeight/(max(rawData.map(row => row[this.yValue])));
         this.axisColour = color(255);
         this.axisTickColour = color(255);
         this.barColour = color(255);
-        this.barColours = color(0);
         this.axisTextColour = color(255); 
         this.numTicks = 5;
         this.tickLength = 10;
-        
-    };
+    }
 
     renderBars(){
         push()
@@ -32,26 +28,13 @@ class StackedBarchart{
             translate(this.margin, 0)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
-                // let newY = 0; //to stack new bars
-                rect(0,0,this.barWidth, -this.data[i][this.yValue]*this.scaler);
-                push();
-                translate(xPos, 0);
-
-                push();
-
-                for(let j = 0; j<this.yValue.length; j++) {
-                fill(this.barColours);
+                fill(this.barColour);
                 
-                rect(0,0,this.barWidth, -this.data[i][this.yValue[j]]*this.scaler);
-                translate(0, -this.data[i][this.yValue[j]]*this.scaler -1);
-                
+                rect(xPos,0,this.barWidth, -this.data[i][this.yValue]*this.scaler)
             }
 
             pop()
         pop()
-        }
-        pop();
-        pop();
     }
     renderAxis(){
         push()
@@ -66,13 +49,13 @@ class StackedBarchart{
     renderLabels(){
         push()
             translate(this.chartPosX, this.chartPosY)
-            
+           
             push()
             
             translate(this.margin, 0)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
-                
+              
                 fill(this.axisTextColour);
                 noStroke();
                 textAlign(LEFT,CENTER)
@@ -103,5 +86,3 @@ class StackedBarchart{
         pop()
     }
 }
-    
-    
