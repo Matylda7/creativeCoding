@@ -1,4 +1,4 @@
-class BarChart {
+class ClusterChart {
     constructor(_data, _xValue, _yValue, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY){
         this.data = _data;
         this.xValue = _xValue;
@@ -11,7 +11,7 @@ class BarChart {
         this.axisTickThickness = 1;
         this.chartPosX = _chartPosX;
         this.chartPosY = _chartPosY;
-        this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin*2))/(this.data.length-1);
+        this.gap = (this.chartWidth - (this.data.length * this.barWidth*yValues.length) - (this.margin*2))/(this.data.length-1);
         this.scaler = this.chartHeight/(max(rawData.map(row => row[this.yValue])));
         this.axisColour = color(255);
         this.axisTickColour = color(255);

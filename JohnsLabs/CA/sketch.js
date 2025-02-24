@@ -2,10 +2,12 @@
 
 let data;
 let rawData = [];
+let rawData1 = [];
 let charts = [];
 
 function preload(){
     data = loadTable('data/Population.csv', 'csv', 'header')
+    data1 = loadTable('data/maleFemale.csv', 'csv', 'header')
 }
 
 function setup(){
@@ -17,7 +19,7 @@ function setup(){
 
     charts.push(new HorizontalBarchart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 500, 450));
     charts.push(new StackedBarchart(rawData, "County", "Population_number","Year", 400, 400, 10, 15, 2, 50, 850));
-    charts.push(new ClusterChart(rawData, "County", "Population_number","Year", 400, 400, 10, 15, 2, 50, 850));
+    charts.push(new ClusterChart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 450, 850));
 
 }
 function draw(){
@@ -36,6 +38,9 @@ function cleanData(){
     for (let i=0; i<data.rows.length; i++){
         rawData.push(data.rows[i].obj)
     }
+    for (let i=0; i<data1.rows.length; i++){
+        rawData1.push(data1.rows[i].obj)
+    }
 
     //loops through the rawData array, takes the variables in the year and population_number column and changes them into integers
     for (let i=0; i<rawData.length; i++){
@@ -46,8 +51,8 @@ function cleanData(){
     for (let i=0; i<rawData.length; i++){
         rawData[i].Year = parseInt(rawData[i].Year)
         rawData[i].Population_number = parseInt(rawData[i].Population_number)
-        // rawData[i].Female_25 = parseInt(rawData[i].Female_25)
-        // rawData[i].Male_25 = parseInt(rawData[i].Male_25)
+        rawData1[i].Female_25 = parseInt(rawData[i].Female_25)
+        rawData1[i].Male_25 = parseInt(rawData[i].Male_25)
     }
 
 }
