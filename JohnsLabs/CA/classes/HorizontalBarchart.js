@@ -27,7 +27,7 @@ class HorizontalBarchart {
         push()
             translate(this.chartPosX, this.chartPosY)
             push()
-            
+            translate(0,this.margin)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
                 fill(this.barColour);
@@ -60,12 +60,12 @@ class HorizontalBarchart {
               
                 fill(this.axisTextColour);
                 noStroke();
-                textAlign(LEFT,CENTER)
+                textAlign(RIGHT, CENTER)
                 textSize(8);
 
                 push()
-                    translate(xPos + (this.barWidth/2), 10)
-                    rotate(45)
+                    translate(-23,xPos + (this.barWidth/2)+this.margin)
+                    rotate(50)
                     text(this.data[i][this.xValue],0,0);
                 pop()
             
