@@ -82,7 +82,7 @@ class HorizontalBarchart {
             strokeWeight(this.axisTickThickness)
             let tickIncrement = this.chartHeight/this.numTicks;
             for (let i = 0; i <= this.numTicks; i++){
-                line(0,-tickIncrement*i,-this.tickLength,-tickIncrement*i);
+                line(tickIncrement*i,0,tickIncrement*i,-this.tickLength);
             }
 
         pop()
