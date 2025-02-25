@@ -1,17 +1,17 @@
 class ClusterChart {
-    constructor(_data, _xValue,_yValue, _yValue2, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY){
-        this.data = _data;
-        this.xValue = _xValue;
-        this.yValue = _yValue;
-        this.yValue2 = _yValue2;
-        this.chartHeight = _chartHeight;
-        this.chartWidth = _chartWidth*2;
-        this.barWidth = _barWidth;
-        this.margin = _margin;
-        this.axisThickness = _axisThickness;
+    constructor(obj){
+        this.data = obj.data;
+        this.xValue = obj.xValue;
+        this.yValue = obj.yValue;
+        this.yValue2 = obj.yValue2;
+        this.chartHeight = obj.chartHeight || 300;
+        this.chartWidth = obj.chartWidth*2 || 500*2;
+        this.barWidth = obj.barWidth || 10;
+        this.margin = obj.margin || 15;
+        this.axisThickness = obj.axisThickness || 1;
         this.axisTickThickness = 1;
-        this.chartPosX = _chartPosX;
-        this.chartPosY = _chartPosY;
+        this.chartPosX = obj.chartPosX;
+        this.chartPosY = obj.chartPosY;
         this.gap = (this.chartWidth - (this.data.length * (this.barWidth)) - (this.margin*2))/(this.data.length-1);
         this.scaler = this.chartHeight/(max(this.data.map(row => row[this.yValue])));
         this.axisColour = color(255);

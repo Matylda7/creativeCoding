@@ -1,16 +1,16 @@
 class StackedBarchart {
-    constructor(_data, _xValue, _yValues, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY) {
-        this.data = _data;
-        this.xValue = _xValue;
-        this.yValues = _yValues;
-        this.chartHeight = _chartHeight;
-        this.chartWidth = _chartWidth;
-        this.barWidth = _barWidth;
-        this.margin = _margin;
-        this.axisThickness = _axisThickness;
+    constructor(obj) {
+        this.data = obj.data;
+        this.xValue = obj.xValue;
+        this.yValues = obj.yValues;
+        this.chartHeight = obj.chartHeight || 300;
+        this.chartWidth = obj.chartWidth || 500;
+        this.barWidth = obj.barWidth || 10;
+        this.margin = obj.margin || 15;
+        this.axisThickness = obj.axisThickness || 1;
         this.axisTickThickness = 1;
-        this.chartPosX = _chartPosX;
-        this.chartPosY = _chartPosY;
+        this.chartPosX = obj.chartPosX;
+        this.chartPosY = obj.chartPosY;
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2)) / (this.data.length - 1);
 
         this.total = this.data.map((row) => {

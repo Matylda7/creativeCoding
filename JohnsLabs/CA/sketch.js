@@ -16,11 +16,11 @@ function setup() {
     cleanData();
     noLoop();
     //creating a BarChart object with these parameters and putting it in an array called charts
-    charts.push(new BarChart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 50, 410));
+    charts.push(new BarChart({data: rawData, xValue:"County",yValue: "Population_number", chartPosX:50, chartPosY:410}));
 
-    charts.push(new HorizontalBarchart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 650, 450));
-    charts.push(new StackedBarchart(rawData1,"County", ["Female_25", "Male_25"], 300, 500, 10, 15, 1, 50, 900));
-    charts.push(new ClusterChart(rawData1, "County", "Female_25", "Male_25", 400, 400, 10, 15, 2, 550, 950));
+    charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number", chartPosX: 650, chartPosY:450}));
+    charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"],chartPosX: 50,chartPosY: 900}));
+    charts.push(new ClusterChart({data: rawData1, xValue: "County", yValue: "Female_25", yValue2: "Male_25", chartPosX: 550, chartPosY: 950}));
 
 }
 function draw() {
