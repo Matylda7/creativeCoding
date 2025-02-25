@@ -4,18 +4,19 @@ class ClusterChart {
         this.xValue = _xValue;
         this.yValue = _yValue;
         this.chartHeight = _chartHeight;
-        this.chartWidth = _chartWidth;
+        this.chartWidth = _chartWidth*2;
         this.barWidth = _barWidth;
         this.margin = _margin;
         this.axisThickness = _axisThickness;
         this.axisTickThickness = 1;
         this.chartPosX = _chartPosX;
         this.chartPosY = _chartPosY;
-        this.gap = (this.chartWidth - (this.data.length * this.barWidth*yValues.length) - (this.margin*2))/(this.data.length-1);
-        this.scaler = this.chartHeight/(max(rawData.map(row => row[this.yValue])));
+        this.gap = (this.chartWidth - (this.data.length * (this.barWidth)) - (this.margin*2))/(this.data.length-1);
+        this.scaler = this.chartHeight/(max(rawData1.map(row => row[this.yValue])));
         this.axisColour = color(255);
         this.axisTickColour = color(255);
         this.barColour = color(255);
+        this.barColour2 = color(25);
         this.axisTextColour = color(255); 
         this.numTicks = 5;
         this.tickLength = 10;
@@ -29,8 +30,11 @@ class ClusterChart {
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
                 fill(this.barColour);
+                let xPos2 = i*(this.barWidth +this.gap)+this.barWidth;
                 
-                rect(xPos,0,this.barWidth, -this.data[i][this.yValue]*this.scaler)
+                rect(xPos,0,this.barWidth, -this.data[i][this.yValue]*this.scaler);
+                fill(this.barColour2);
+                rect(xPos2,0,this.barWidth, -this.data[i][this.yValue]*this.scaler)
             }
 
             pop()
