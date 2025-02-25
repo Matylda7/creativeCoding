@@ -93,6 +93,8 @@ class ClusterChart {
         pop()
     }
     renderTicks(){
+        let total = max(this.data.map(m => m[this.yValue])) / this.numTicks;
+        
         push()
             translate(this.chartPosX, this.chartPosY)
             noFill();
@@ -100,7 +102,7 @@ class ClusterChart {
             strokeWeight(this.axisTickThickness)
             let tickIncrement = this.chartHeight/this.numTicks;
             for (let i = 0; i <= this.numTicks; i++){
-               
+                let sortedTotal = (total*i).toFixed(0)
                 stroke(this.axisTickColour);
                 line(0,-tickIncrement*i,-this.tickLength,-tickIncrement*i);
                 fill(this.axisTextColour);
@@ -108,7 +110,7 @@ class ClusterChart {
                 textAlign(LEFT, CENTER);
                 textFont(this.textFont);
                 textSize(8);
-                text(this.total[i],-this.tickLength-23,-tickIncrement*i)
+                text(sortedTotal,-this.tickLength-23,-tickIncrement*i)
                 }
             
 

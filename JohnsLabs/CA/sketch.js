@@ -18,7 +18,7 @@ function setup() {
     //creating a BarChart object with these parameters and putting it in an array called charts
     // charts.push(new BarChart({data: rawData, xValue:"County",yValue: "Population_number", chartPosX:50, chartPosY:410, title:"This is the title"}));
 
-    // charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number", chartPosX: 650, chartPosY:150}));
+    charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number"}));
     // charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"],chartPosX: 50,chartPosY: 900}));
     charts.push(new ClusterChart({data: rawData1, xValue: "County", yValues: ["Female_25","Male_25"], chartPosX: 550, chartPosY: 950, title:"2011 Population of Females and males in different counties"}));
 

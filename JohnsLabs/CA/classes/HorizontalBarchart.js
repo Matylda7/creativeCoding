@@ -24,6 +24,7 @@ class HorizontalBarchart {
         this.tickLength = 10;
         this.textFont = obj.textFont||"Roboto";
         this.title = obj.title || "Horizontal Barchart";
+        
     }
 
     renderBars(){
@@ -80,15 +81,30 @@ class HorizontalBarchart {
         pop()
     }
     renderTicks(){
+        let total = max(this.data.map(m => [this.yValue])) / this.numTicks;
         push()
             translate(this.chartPosX, this.chartPosY)
             noFill();
-            stroke(this.axisTickColour);
+
             strokeWeight(this.axisTickThickness)
-            let tickIncrement = this.chartHeight/this.numTicks;
+
+            let tickIncrement = this.chartWidth/this.numTicks;
             for (let i = 0; i <= this.numTicks; i++){
-                line(tickIncrement*i,0,tickIncrement*i,this.tickLength);
-            }
+                let sortedTotal = (total*i).toFixed(0)
+                stroke(this.axisTickColour);
+                line(tickIncrement*i,0,tickIncrement*i,this.tickLength,);
+                fill(this.axisTextColour);
+                noStroke();
+                textAlign(LEFT, CENTER);
+                textFont(this.textFont);
+                textSize(8);
+                text(sortedTotal,tickIncrement*i,this.tickLength+10)
+                }
+            
+            // let tickIncrement = this.chartHeight/this.numTicks;
+            // for (let i = 0; i <= this.numTicks; i++){
+            //     line(tickIncrement*i,0,tickIncrement*i,this.tickLength);
+            // }
 
         pop()
     }
@@ -100,7 +116,7 @@ class HorizontalBarchart {
             textAlign(CENTER);
             fill(this.axisTextColour);
             textSize(30);
-            text(this.title,this.chartWidth/2,-this.chartHeight-15);
+            text(this.title,this.chartWidth/2,-this.chartHeight);
        
     }
 }
