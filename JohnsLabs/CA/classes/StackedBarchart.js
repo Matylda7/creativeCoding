@@ -9,8 +9,8 @@ class StackedBarchart {
         this.margin = obj.margin || 15;
         this.axisThickness = obj.axisThickness || 1;
         this.axisTickThickness = 1;
-        this.chartPosX = obj.chartPosX;
-        this.chartPosY = obj.chartPosY;
+        this.chartPosX = obj.chartPosX || 460;
+        this.chartPosY = obj.chartPosY || 610;
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2)) / (this.data.length - 1);
 
         this.total = this.data.map((row) => {
@@ -31,6 +31,8 @@ class StackedBarchart {
         this.numTicks = 5;
         this.tickLength = 10;
         this.barColours = [color(255), color(25)];
+        this.textFont = obj.textFont||"Roboto";
+        this.title = obj.title || "Stacked Barchart";
     }
 
     // renderBars(){
@@ -122,7 +124,8 @@ class StackedBarchart {
 
             fill(this.axisTextColour);
             noStroke();
-            textAlign(LEFT, CENTER)
+            textAlign(LEFT, CENTER);
+            textFont(this.textFont);
             textSize(10);
 
             push()
@@ -148,6 +151,17 @@ class StackedBarchart {
         }
 
         pop()
+    }
+
+    renderTitle(){
+        push()
+            translate(this.chartPosX,this.chartPosY);
+            textFont(this.textFont);
+            textAlign(CENTER);
+            fill(this.axisTextColour);
+            textSize(30);
+            text(this.title,this.chartWidth/2,-this.chartHeight-15);
+       
     }
 }
 

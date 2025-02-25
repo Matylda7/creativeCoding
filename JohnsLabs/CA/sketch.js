@@ -1,4 +1,4 @@
-// how to only select half of the rows in the csv file
+
 //total maleFemale data 2011,Total,33835,31407,4588252
 let data;
 let rawData = [];
@@ -16,11 +16,11 @@ function setup() {
     cleanData();
     noLoop();
     //creating a BarChart object with these parameters and putting it in an array called charts
-    charts.push(new BarChart({data: rawData, xValue:"County",yValue: "Population_number", chartPosX:50, chartPosY:410}));
+    // charts.push(new BarChart({data: rawData, xValue:"County",yValue: "Population_number", chartPosX:50, chartPosY:410, title:"This is the title"}));
 
-    charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number", chartPosX: 650, chartPosY:450}));
-    charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"],chartPosX: 50,chartPosY: 900}));
-    charts.push(new ClusterChart({data: rawData1, xValue: "County", yValue: "Female_25", yValue2: "Male_25", chartPosX: 550, chartPosY: 950}));
+    // charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number", chartPosX: 650, chartPosY:150}));
+    // charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"],chartPosX: 50,chartPosY: 900}));
+    charts.push(new ClusterChart({data: rawData1, xValue: "County", yValues: ["Female_25","Male_25"], chartPosX: 550, chartPosY: 950, title:"2011 Population of Females and males in different counties"}));
 
 }
 function draw() {
@@ -31,6 +31,7 @@ function draw() {
         chart.renderAxis();
         chart.renderLabels();
         chart.renderTicks();
+        chart.renderTitle();
     });
 }
 

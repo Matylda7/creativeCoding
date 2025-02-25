@@ -23,6 +23,11 @@ class BarChart {
         this.axisTextColour = color(255); 
         this.numTicks = 5;
         this.tickLength = 10;
+
+        this.textFont = obj.textFont||"Roboto";
+        this.title = obj.title || "BarChart";
+        this.titleYPos = obj.titleYPos ||this.chartHeight;
+        
     }
 
     renderBars(){
@@ -63,7 +68,8 @@ class BarChart {
               
                 fill(this.axisTextColour);
                 noStroke();
-                textAlign(LEFT,CENTER)
+                textAlign(LEFT,CENTER);
+                textFont(this.textFont);
                 textSize(8);
 
                 push()
@@ -89,6 +95,16 @@ class BarChart {
             }
 
         pop()
+    }
+    renderTitle(){
+        push()
+            translate(this.chartPosX,this.chartPosY);
+            textFont(this.textFont);
+            textAlign(CENTER);
+            fill(this.axisTextColour);
+            textSize(30);
+            text(this.title,this.chartWidth/2,-this.chartHeight-15);
+       
     }
 }
 

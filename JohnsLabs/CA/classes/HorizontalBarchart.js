@@ -11,8 +11,8 @@ class HorizontalBarchart {
         this.margin = obj.margin  || 15;
         this.axisThickness = obj.axisThickness || 1;
         this.axisTickThickness = 1;
-        this.chartPosX = obj.chartPosX;
-        this.chartPosY = obj.chartPosY;
+        this.chartPosX = obj.chartPosX || 550;
+        this.chartPosY = obj.chartPosY || 650;
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin*2))/(this.data.length-1);
         this.scaler = this.chartHeight/(max(this.data.map(row => row[this.yValue])));
         
@@ -22,6 +22,8 @@ class HorizontalBarchart {
         this.axisTextColour = color(255); 
         this.numTicks = 5;
         this.tickLength = 10;
+        this.textFont = obj.textFont||"Roboto";
+        this.title = obj.title || "Horizontal Barchart";
     }
 
     renderBars(){
@@ -62,7 +64,8 @@ class HorizontalBarchart {
               
                 fill(this.axisTextColour);
                 noStroke();
-                textAlign(RIGHT, CENTER)
+                textAlign(RIGHT, CENTER);
+                textFont(this.textFont);
                 textSize(8);
 
                 push()
@@ -88,6 +91,17 @@ class HorizontalBarchart {
             }
 
         pop()
+    }
+
+    renderTitle(){
+        push()
+            translate(this.chartPosX,this.chartPosY);
+            textFont(this.textFont);
+            textAlign(CENTER);
+            fill(this.axisTextColour);
+            textSize(30);
+            text(this.title,this.chartWidth/2,-this.chartHeight-15);
+       
     }
 }
 

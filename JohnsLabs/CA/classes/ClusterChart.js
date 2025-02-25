@@ -2,16 +2,17 @@ class ClusterChart {
     constructor(obj){
         this.data = obj.data;
         this.xValue = obj.xValue;
-        this.yValue = obj.yValue;
-        this.yValue2 = obj.yValue2;
+        this.yValues = obj.yValues;
+        this.yValue = this.yValues[0];
+        this.yValue2 = this.yValues[1];
         this.chartHeight = obj.chartHeight || 300;
         this.chartWidth = obj.chartWidth*2 || 500*2;
         this.barWidth = obj.barWidth || 10;
         this.margin = obj.margin || 15;
         this.axisThickness = obj.axisThickness || 1;
         this.axisTickThickness = 1;
-        this.chartPosX = obj.chartPosX;
-        this.chartPosY = obj.chartPosY;
+        this.chartPosX = obj.chartPosX || 250;
+        this.chartPosY = obj.chartPosY || 610;
         this.gap = (this.chartWidth - (this.data.length * (this.barWidth)) - (this.margin*2))/(this.data.length-1);
         this.scaler = this.chartHeight/(max(this.data.map(row => row[this.yValue])));
         this.axisColour = color(255);
@@ -21,6 +22,16 @@ class ClusterChart {
         this.axisTextColour = color(255); 
         this.numTicks = 5;
         this.tickLength = 10;
+        this.textFont = obj.textFont||"Roboto";
+        this.title = obj.title || "Cluster Barchart";
+        this.total = this.data.map((row) => {
+            let runningTotal = 0;
+            for(let i=0; i<this.yValues.length; i++){
+                runningTotal += row[this.yValues[i]];
+            }
+            console.log(runningTotal)
+            return runningTotal
+        })
     }
 
     renderBars(){
@@ -64,14 +75,17 @@ class ClusterChart {
               
                 fill(this.axisTextColour);
                 noStroke();
-                textAlign(LEFT,CENTER)
+                textAlign(LEFT,CENTER);
+                textFont(this.textFont);
                 textSize(8);
 
                 push()
                     translate(xPos + (this.barWidth/2), 10)
                     rotate(45)
                     text(this.data[i][this.xValue],0,0);
+                   
                 pop()
+
             
             }
             pop()
@@ -82,13 +96,33 @@ class ClusterChart {
         push()
             translate(this.chartPosX, this.chartPosY)
             noFill();
-            stroke(this.axisTickColour);
+            
             strokeWeight(this.axisTickThickness)
             let tickIncrement = this.chartHeight/this.numTicks;
             for (let i = 0; i <= this.numTicks; i++){
+               
+                stroke(this.axisTickColour);
                 line(0,-tickIncrement*i,-this.tickLength,-tickIncrement*i);
-            }
+                fill(this.axisTextColour);
+                noStroke();
+                textAlign(LEFT, CENTER);
+                textFont(this.textFont);
+                textSize(8);
+                text(this.total[i],-this.tickLength-23,-tickIncrement*i)
+                }
+            
 
         pop()
+    }
+
+    renderTitle(){
+        push()
+            translate(this.chartPosX,this.chartPosY);
+            textFont(this.textFont);
+            textAlign(CENTER);
+            fill(this.axisTextColour);
+            textSize(25);
+            text(this.title,this.chartWidth/2,-this.chartHeight-40);
+       
     }
 }
