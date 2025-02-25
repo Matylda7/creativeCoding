@@ -1,5 +1,5 @@
 //2x
-//swap everything to make horizontal
+
 class HorizontalBarchart {
     constructor(_data, _xValue, _yValue, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY){
         this.data = _data;
@@ -30,6 +30,7 @@ class HorizontalBarchart {
             translate(0,-this.margin)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
+                noStroke();
                 fill(this.barColour);
                 
                 rect(0,-xPos,this.data[i][this.yValue]*this.scaler,this.barWidth )

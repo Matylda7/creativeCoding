@@ -32,6 +32,7 @@ class BarChart {
             translate(this.margin, 0)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
+                noStroke();
                 fill(this.barColour);
                 
                 rect(xPos,0,this.barWidth, -this.data[i][this.yValue]*this.scaler)

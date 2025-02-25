@@ -14,12 +14,17 @@ class StackedBarchart {
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2)) / (this.data.length - 1);
 
         this.total = this.data.map((row) => {
-            return row['Female_25'] + row['Male_25']
+            let runningTotal = 0;
+            for(let i=0; i<this.yValues.length; i++){
+                runningTotal += row[this.yValues[i]];
+            }
+            console.log(runningTotal)
+            return runningTotal
         })
 
         this.scaler = this.chartHeight / (max(this.total));
-        this.axisColour = color(255);
-        this.axisTickColour = color(255);
+        this.axisColour = color(255,120);
+        this.axisTickColour = color(255,120);
         this.barColour = color(255);
         this.barColour2 = color(25);
         this.axisTextColour = color(255);
@@ -118,7 +123,7 @@ class StackedBarchart {
             fill(this.axisTextColour);
             noStroke();
             textAlign(LEFT, CENTER)
-            textSize(8);
+            textSize(10);
 
             push()
             translate(xPos + (this.barWidth / 2), 10)

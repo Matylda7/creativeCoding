@@ -19,7 +19,7 @@ function setup() {
     charts.push(new BarChart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 50, 410));
 
     charts.push(new HorizontalBarchart(rawData, "County", "Population_number", 400, 400, 10, 15, 2, 650, 450));
-    charts.push(new StackedBarchart(rawData1,"County", ["Female_25", "Male_25"], 400, 400, 10, 15, 2, 50, 950));
+    charts.push(new StackedBarchart(rawData1,"County", ["Female_25", "Male_25"], 300, 500, 10, 15, 1, 50, 900));
     charts.push(new ClusterChart(rawData1, "County", "Female_25", "Male_25", 400, 400, 10, 15, 2, 550, 950));
 
 }

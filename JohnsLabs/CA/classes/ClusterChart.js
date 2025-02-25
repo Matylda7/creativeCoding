@@ -30,6 +30,7 @@ class ClusterChart {
             translate(this.margin, 0)
             for(let i = 0; i<this.data.length; i++) {
                 let xPos = i*(this.barWidth + this.gap);
+                noStroke();
                 fill(this.barColour);
                 let xPos2 = i*(this.barWidth +this.gap)+this.barWidth;
                 
