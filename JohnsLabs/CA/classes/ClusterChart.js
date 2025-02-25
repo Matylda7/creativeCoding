@@ -1,8 +1,9 @@
 class ClusterChart {
-    constructor(_data, _xValue, _yValue, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY){
+    constructor(_data, _xValue,_yValue, _yValue2, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY){
         this.data = _data;
         this.xValue = _xValue;
         this.yValue = _yValue;
+        this.yValue2 = _yValue2;
         this.chartHeight = _chartHeight;
         this.chartWidth = _chartWidth*2;
         this.barWidth = _barWidth;
@@ -12,7 +13,7 @@ class ClusterChart {
         this.chartPosX = _chartPosX;
         this.chartPosY = _chartPosY;
         this.gap = (this.chartWidth - (this.data.length * (this.barWidth)) - (this.margin*2))/(this.data.length-1);
-        this.scaler = this.chartHeight/(max(rawData1.map(row => row[this.yValue])));
+        this.scaler = this.chartHeight/(max(this.data.map(row => row[this.yValue])));
         this.axisColour = color(255);
         this.axisTickColour = color(255);
         this.barColour = color(255);
@@ -34,7 +35,7 @@ class ClusterChart {
                 
                 rect(xPos,0,this.barWidth, -this.data[i][this.yValue]*this.scaler);
                 fill(this.barColour2);
-                rect(xPos2,0,this.barWidth, -this.data[i][this.yValue]*this.scaler)
+                rect(xPos2,0,this.barWidth, -this.data[i][this.yValue2]*this.scaler)
             }
 
             pop()
