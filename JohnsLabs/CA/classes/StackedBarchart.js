@@ -6,11 +6,11 @@ class StackedBarchart {
         this.xValue = obj.xValue;
         this.yValues = obj.yValues;
         this.chartHeight = obj.chartHeight || 300;
-        this.chartWidth = obj.chartWidth || 500;
+        this.chartWidth = obj.chartWidth*2 || 500*2;
         this.barWidth = obj.barWidth || 10;
         this.margin = obj.margin || 15;
         this.axisThickness = obj.axisThickness || 1;
-        this.axisTickThickness = 1;
+        this.axisTickThickness = obj.axisTickThickness || 1;
         this.chartPosX = obj.chartPosX || 460;
         this.chartPosY = obj.chartPosY || 610;
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2)) / (this.data.length - 1);
@@ -29,7 +29,7 @@ class StackedBarchart {
         this.axisTickColour = color(255,120);
         this.barColour = color(255);
         this.barColour2 = color(25);
-        this.axisTextColour = color(255);
+        this.axisTextColour = color(255,230);
         this.numTicks = 5;
         this.tickLength = 10;
         this.barColours = [color(255), color(25)];
@@ -112,6 +112,20 @@ class StackedBarchart {
         strokeWeight(this.axisThickness)
         line(0, 0, 0, -this.chartHeight)
         line(0, 0, this.chartWidth, 0)
+        fill(255);
+        
+        noStroke();
+        rect(this.chartWidth+20,-this.chartHeight,15,15);
+        textSize(10);
+        textFont(this.textFont);
+        text(this.yValues[0],this.chartWidth+40,-this.chartHeight-12)
+        fill(25);
+        rect(this.chartWidth+20,-this.chartHeight-20,15,15);
+        textSize(10);
+        textFont(this.textFont);
+        fill(255);
+        text(this.yValues[1],this.chartWidth+40,-this.chartHeight+9)
+        
         pop()
     }
     renderLabels() {
@@ -170,8 +184,9 @@ class StackedBarchart {
             textFont(this.textFont);
             textAlign(CENTER);
             fill(this.axisTextColour);
-            textSize(30);
-            text(this.title,this.chartWidth/2,-this.chartHeight-15);
+            textSize(25);
+            text(this.title,this.chartWidth/2,-this.chartHeight-50);
+        pop()
        
     }
 }

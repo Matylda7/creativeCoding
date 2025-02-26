@@ -21,7 +21,7 @@ class PieChart {
         this.axisTickColour = color(255,120);
         this.barColour = color(255);
         this.barColour2 = color(25);
-        this.axisTextColour = color(255);
+        this.axisTextColour = color(255,230);
         this.numTicks = 5;
         this.tickLength = 10;
         this.barColours = [color(255), color(25)];

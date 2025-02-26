@@ -14,17 +14,18 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1500, 1000);
+    createCanvas(4000, 4000);
     cleanData();
     angleMode(DEGREES);
     noLoop();
     //creating a BarChart object with these parameters and putting it in an array called charts
-    charts.push(new BarChart({data: rawData, xValue:"County",yValue: "Population_number", chartPosX:50, chartPosY:410, title:"This is the title"}));
-   // charts.push(new PieChart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"],textFont:"Roboto"}));
-    charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number"}));
-    charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"]}));
-    charts.push(new LineChart({data: rawData1,data2: rawData , xValue: "County", yValues: ["Male_25","Female_25"]}));
-    charts.push(new ClusterChart({data: rawData1, xValue: "County", yValues: ["Female_25","Male_25"], chartPosX: 550, chartPosY: 950, title:"2011 Population of Females and males in different counties"}));
+
+    charts.push(new ClusterChart({ data: rawData1, xValue: "County", yValues: ["Female_Aged_25"],  title: "2011 Population of Females in different counties" }));
+    charts.push(new PieChart({ data: rawData1, xValue: "County", yValues: ["Female_Aged_25", "Male_Aged_25"],chartPosX:1900,chartPosY: 500, textFont: "Roboto" }));
+    charts.push(new HorizontalBarchart({ data: rawData, xValue: "County",chartPosY: 1500, yValue: "Population_number"}));
+    charts.push(new StackedBarchart({ data: rawData1, xValue: "County", yValues: ["Female_Aged_25", "Male_Aged_25"], chartPosY: 2200,title: "2011 Population in different counties in Ireland"}));
+    charts.push(new LineChart({ data: rawData1, data2: rawData, xValue: "County", yValues: ["Male_Aged_25", "Female_Aged_25"], chartPosY: 2800, title: "2011 Population of Females and males in different counties in Ireland" }));
+    charts.push(new ClusterChart({ data: rawData1, xValue: "County", yValues: ["Female_Aged_25", "Male_Aged_25"],chartPosY: 3500, title: "2011 Population of Females and males in different counties in Ireland" }));
 
 }
 function draw() {
@@ -62,8 +63,8 @@ function cleanData() {
     for (let i = 0; i < rawData1.length; i++) {
         rawData1[i].Year = parseInt(rawData1[i].Year)
         rawData1[i].Population_number = parseInt(rawData1[i].Population_number)
-        rawData1[i].Female_25 = parseInt(rawData1[i].Female_25)
-        rawData1[i].Male_25 = parseInt(rawData1[i].Male_25)
+        rawData1[i].Female_Aged_25 = parseInt(rawData1[i].Female_Aged_25)
+        rawData1[i].Male_Aged_25 = parseInt(rawData1[i].Male_Aged_25)
     }
 
 }

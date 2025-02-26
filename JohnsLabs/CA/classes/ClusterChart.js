@@ -10,16 +10,16 @@ class ClusterChart {
         this.barWidth = obj.barWidth || 10;
         this.margin = obj.margin || 15;
         this.axisThickness = obj.axisThickness || 1;
-        this.axisTickThickness = 1;
-        this.chartPosX = obj.chartPosX || 250;
+        this.axisTickThickness = obj.axisTickThickness || 1;
+        this.chartPosX = obj.chartPosX || 450;
         this.chartPosY = obj.chartPosY || 610;
         this.gap = (this.chartWidth - (this.data.length * (this.barWidth)) - (this.margin*2))/(this.data.length-1);
         this.scaler = this.chartHeight/(max(this.data.map(row => row[this.yValue])));
-        this.axisColour = color(255);
-        this.axisTickColour = color(255);
+        this.axisColour = color(255,120);
+        this.axisTickColour = color(255,120);
         this.barColour = color(255);
         this.barColour2 = color(25);
-        this.axisTextColour = color(255); 
+        this.axisTextColour = color(255,230);
         this.numTicks = 5;
         this.tickLength = 10;
         this.textFont = obj.textFont||"Roboto";
@@ -77,7 +77,7 @@ class ClusterChart {
                 noStroke();
                 textAlign(LEFT,CENTER);
                 textFont(this.textFont);
-                textSize(8);
+                textSize(10);
 
                 push()
                     translate(xPos + (this.barWidth/2), 10)
@@ -93,7 +93,7 @@ class ClusterChart {
         pop()
     }
     renderTicks(){
-        let total = max(this.data.map(m => m[this.yValue])) / this.numTicks;
+        let total = max(this.data.map(row => row[this.yValue])) / this.numTicks;
         
         push()
             translate(this.chartPosX, this.chartPosY)
@@ -125,6 +125,7 @@ class ClusterChart {
             fill(this.axisTextColour);
             textSize(25);
             text(this.title,this.chartWidth/2,-this.chartHeight-40);
+        pop()
        
     }
 }

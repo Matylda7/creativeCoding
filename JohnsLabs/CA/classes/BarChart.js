@@ -17,10 +17,10 @@ class BarChart {
         this.chartPosY = obj.chartPosY || 610;
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin*2))/(this.data.length-1);
         this.scaler = this.chartHeight/(max(this.data.map(row => row[this.yValue])));
-        this.axisColour = color(255);
-        this.axisTickColour = color(255);
+        this.axisColour = color(255,120);
+        this.axisTickColour = color(255,120);
         this.barColour = color(255);
-        this.axisTextColour = color(255); 
+        this.axisTextColour =color(255,230);
         this.numTicks = 5;
         this.tickLength = 10;
 
@@ -104,6 +104,7 @@ class BarChart {
             fill(this.axisTextColour);
             textSize(30);
             text(this.title,this.chartWidth/2,-this.chartHeight-15);
+        pop();
        
     }
 }

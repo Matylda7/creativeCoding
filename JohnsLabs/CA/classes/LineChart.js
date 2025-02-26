@@ -5,7 +5,7 @@ class LineChart{
         this.xValue = obj.xValue;
         this.yValues = obj.yValues;
         this.chartHeight = obj.chartHeight || 300;
-        this.chartWidth = obj.chartWidth || 500;
+        this.chartWidth = obj.chartWidth*2 || 500*2;
         this.barWidth = obj.barWidth || 10;
         this.margin = obj.margin || 15;
         this.axisThickness = obj.axisThickness || 1;
@@ -28,7 +28,7 @@ class LineChart{
         this.axisTickColour = color(255,120);
         this.barColour = color(255);
         this.barColour2 = color(25);
-        this.axisTextColour = color(255);
+        this.axisTextColour = color(255,230);
         this.numTicks = 5;
         this.tickLength = 10;
         this.barColours = [color(255), color(25)];
@@ -85,7 +85,7 @@ class LineChart{
             vertex(xPos,-this.data[i][this.yValues[0]] * this.scaler);
             stroke(25);
             strokeWeight(1);
-            ellipse(xPos,-this.data[i][this.yValues] * this.scaler, 10, 10);
+            ellipse(xPos,-this.data[i][this.yValues[0]] * this.scaler, 10, 10);
             
             }
             endShape();
@@ -240,8 +240,10 @@ class LineChart{
             textFont(this.textFont);
             textAlign(CENTER);
             fill(this.axisTextColour);
-            textSize(30);
+            textSize(25);
             text(this.title,this.chartWidth/2,-this.chartHeight-15);
+
+        pop()
        
     }
 }
