@@ -5,21 +5,24 @@ let rawData = [];
 let rawData1 = [];
 let charts = [];
 let data1 = [];
+let font;
 
 function preload() {
     data = loadTable('data/Population.csv', 'csv', 'header')
     data1 = loadTable('data/maleFemale.csv', 'csv', 'header')
+    font = loadFont('font/Roboto/Roboto-VariableFOnt_wdth,wght.ttf');
 }
 
 function setup() {
     createCanvas(1500, 1000);
     cleanData();
+    angleMode(DEGREES);
     noLoop();
     //creating a BarChart object with these parameters and putting it in an array called charts
-    // charts.push(new BarChart({data: rawData, xValue:"County",yValue: "Population_number", chartPosX:50, chartPosY:410, title:"This is the title"}));
-
-    //charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number"}));
-    //charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"]}));
+    charts.push(new BarChart({data: rawData, xValue:"County",yValue: "Population_number", chartPosX:50, chartPosY:410, title:"This is the title"}));
+   // charts.push(new PieChart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"],textFont:"Roboto"}));
+    charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number"}));
+    charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"]}));
     charts.push(new LineChart({data: rawData1,data2: rawData , xValue: "County", yValues: ["Male_25","Female_25"]}));
     charts.push(new ClusterChart({data: rawData1, xValue: "County", yValues: ["Female_25","Male_25"], chartPosX: 550, chartPosY: 950, title:"2011 Population of Females and males in different counties"}));
 
