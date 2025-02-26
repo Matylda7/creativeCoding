@@ -81,7 +81,7 @@ class HorizontalBarchart {
         pop()
     }
     renderTicks(){
-        let total = max(this.data.map(m => [this.yValue])) / this.numTicks;
+        let total = max(this.data.map(m => m[this.yValue])) / this.numTicks;
         push()
             translate(this.chartPosX, this.chartPosY)
             noFill();
@@ -116,7 +116,7 @@ class HorizontalBarchart {
             textAlign(CENTER);
             fill(this.axisTextColour);
             textSize(30);
-            text(this.title,this.chartWidth/2,-this.chartHeight);
+            text(this.title,this.chartWidth/2,(-this.chartHeight*2)+50);
        
     }
 }
