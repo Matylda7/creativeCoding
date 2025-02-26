@@ -1,6 +1,7 @@
 class LineChart{
     constructor(obj) {
         this.data = obj.data;
+        this.data2 = obj.data2;
         this.xValue = obj.xValue;
         this.yValues = obj.yValues;
         this.chartHeight = obj.chartHeight || 300;
@@ -76,13 +77,69 @@ class LineChart{
         push(); // Saves the drawing state again for a nested transformation.
         translate(this.margin, 0); // Adds margin to the left of the chart for positioning the bars.
 
+        beginShape();
         for (let i = 0; i < this.data.length; i++) {
             let xPos = (this.barWidth + this.gap) * i;
+            stroke(255);
+            noFill();
+            vertex(xPos,-this.data[i][this.yValues[0]] * this.scaler);
+            stroke(25);
+            strokeWeight(1);
+            ellipse(xPos,-this.data[i][this.yValues] * this.scaler, 10, 10);
+            
+            }
+            endShape();
 
-            push();
-            translate(xPos, 0); // shift over the x according to where we want the bar(s) drawn            
+           
+            
+            beginShape();
+        for (let i = 0; i < this.data.length; i++) {
+            let xPos = (this.barWidth + this.gap) * i;
+            stroke(255);
+            noFill();
+            vertex(xPos,-this.data[i][this.yValues[1]] * this.scaler);
+            stroke(255);
+            strokeWeight(1);
+            ellipse(xPos,-this.data[i][this.yValues] * this.scaler, 10, 10);
+            
+            }
+            endShape();
+        
+            
+        
+        // for (let i = 0; i < this.data.length; i++) {
+        //     let xPos = (this.barWidth + this.gap) * i;
 
-            push();
+        //     push();
+        //     translate(xPos, 0); // shift over the x according to where we want the bar(s) drawn            
+
+        //     push();
+        //     // two values in y axis, male and female
+        //     // so loop twice
+        //     // each iteration draw a rectangle and we'll give it a different colour, otherwise won't see them
+        //     beginShape();
+        //     for (let j = 0; j < this.yValues.length; j++) {
+        //         noFill();
+        //         stroke(this.barColours[j]);
+        //         vertex(0,-this.data[i][this.yValues[j]] * this.scaler);
+        //         stroke(25);
+        //     strokeWeight(1);
+        //      ellipse(xPos,-this.data[i][this.yValues] * this.scaler, 10, 10);
+        //         rect(0, 0, this.barWidth, -this.data[i][this.yValues[j]] * this.scaler);
+        //         translate(0, -this.data[i][this.yValues[j]] * this.scaler - 1);
+        //     }
+        //     endShape();
+
+        //     pop();
+        //     pop();
+        // }
+
+
+    
+            //push();
+            // translate(xPos, 0); // shift over the x according to where we want the bar(s) drawn            
+
+           // push();
             // two values in y axis, male and female
             // so loop twice
             // each iteration draw a rectangle and we'll give it a different colour, otherwise won't see them
@@ -90,30 +147,30 @@ class LineChart{
             //     let xPos2 = j*(this.barWidth + this.gap);
                 
             //     fill(this.barColours[j]);
-            //     stroke(255);
+                
 
             //     // rect(0, 0, this.barWidth, -this.data[i][this.yValues[j]] * this.scaler);
-            //     //point(this.barWidth,-this.data[i][this.yValues[j]] * this.scaler)
+            //     point(xPos2,-this.data[i][this.yValues[j]] * this.scaler)
                 
-            //     line(xPos2,-this.data[i][this.yValues[j]] * this.scaler,xPos2+this.barWidth+this.gap,-this.data[i][this.yValues[j+1]] * this.scaler)
-            //     translate(0, -this.data[i][this.yValues[j]] * this.scaler - 1);
+                //line(xPos2,-this.data[i][this.yValues[j]] * this.scaler,xPos2+this.barWidth+this.gap,-this.data[i][this.yValues[j+1]] * this.scaler)
+                //translate(0, -this.data[i][this.yValues[j]] * this.scaler - 1);
+             
+            //             beginShape();
+            // for (let j = 0; j < this.yValues.length; j++) {
+            //     let xPos = j * (this.barWidth + this.gap);
+            //     let yVal = -this.data[i][this.yValues[j]] * this.scaler;
+            //     stroke(255)
+            //     vertex(xPos + this.barWidth/2, yVal);
+            //     line(11,2,5,7)
             // }
-                        beginShape();
-            for (let j = 0; j < this.yValues.length; j++) {
-                let xPos = j * (this.barWidth + this.gap);
-                let yVal = -this.data[i][this.yValues[j]] * this.scaler;
-                stroke(255)
-                vertex(xPos + this.barWidth/2, yVal);
-                line(11,2,5,7)
-            }
-            endShape();
+            // endShape();
 
             pop();
             pop();
-        }
+        
 
-        pop(); // Restores the drawing state after rendering the bars.
-        pop(); // Restores the original drawing state after positioning the chart.
+        // pop(); // Restores the drawing state after rendering the bars.
+        // pop(); // Restores the original drawing state after positioning the chart.
     }
 
 

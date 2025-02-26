@@ -20,7 +20,7 @@ function setup() {
 
     //charts.push(new HorizontalBarchart({ data: rawData, xValue: "County", yValue:"Population_number"}));
     //charts.push(new StackedBarchart({data: rawData1, xValue: "County", yValues: ["Female_25", "Male_25"]}));
-    charts.push(new LineChart({data: rawData1, xValue: "County", yValues: ["Population_number"]}));
+    charts.push(new LineChart({data: rawData1,data2: rawData , xValue: "County", yValues: ["Male_25","Female_25"]}));
     charts.push(new ClusterChart({data: rawData1, xValue: "County", yValues: ["Female_25","Male_25"], chartPosX: 550, chartPosY: 950, title:"2011 Population of Females and males in different counties"}));
 
 }
