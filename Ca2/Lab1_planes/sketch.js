@@ -1,19 +1,30 @@
-let planes = [];
-let numPlanes = 50;
+let airfields = [];
 
 function setup(){
     createCanvas(500,500);
-    for (i = 0; i < numPlanes; i++){
-    planes.push(new Plane())
-    }
-    angleMode(DEGREES)
+    angleMode(DEGREES);
+    rectMode(CENTER)
+    airfields.push(new Airfield({
+        airfieldWidth:100,
+        airfieldHeight:100,
+    }));
+    airfields.push(new Airfield({
+        airfieldPosX: 70,
+        airfieldPosY: 70,
+        airfieldWidth:100,
+        airfieldHeight:100,
+    }));
 }
 
 
 function draw(){
-    background(0,0,255);
-    for (i = 0; i < numPlanes; i++){
-    planes[i].renderPlane();
-    planes[i].move();
-    }
+    background(100,170,250);
+    airfields.forEach(airfield => {
+        airfield.renderAirfield();
+        airfield.renderPlane();
+        airfield.movePlanes();
+        airfield.checkPlanePos();
+    })
+    
+
 }
