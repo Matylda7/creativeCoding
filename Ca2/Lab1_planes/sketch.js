@@ -1,30 +1,37 @@
 let airfields = [];
 
-function setup(){
-    createCanvas(500,500);
+function setup() {
+    createCanvas(500, 500);
     angleMode(DEGREES);
-    rectMode(CENTER)
+   
     airfields.push(new Airfield({
-        airfieldWidth:100,
-        airfieldHeight:100,
+        airfieldWidth: 200,
+        airfieldHeight: 200,
     }));
-    airfields.push(new Airfield({
-        airfieldPosX: 70,
-        airfieldPosY: 70,
-        airfieldWidth:100,
-        airfieldHeight:100,
-    }));
+    // airfields.push(new Airfield({
+    //     airfieldPosX: 70,
+    //     airfieldPosY: 70,
+    //     airfieldWidth:100,
+    //     airfieldHeight:100,
+    // }));
+   
 }
 
 
-function draw(){
-    background(100,170,250);
+function draw() {
+    background(100, 170, 250);
     airfields.forEach(airfield => {
         airfield.renderAirfield();
-        airfield.renderPlane();
+       airfield.renderPlane();
+       airfield.checkDist();
         airfield.movePlanes();
-        airfield.checkPlanePos();
-    })
-    
+        //airfield.checkPos();
+
+    });
+
+
+
+
 
 }
+
