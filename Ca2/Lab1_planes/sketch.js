@@ -1,12 +1,13 @@
 let airfields = [];
+let currentKey;
 
 function setup() {
     createCanvas(500, 500);
     angleMode(DEGREES);
    
     airfields.push(new Airfield({
-        airfieldWidth: 200,
-        airfieldHeight: 200,
+        airfieldWidth: 300,
+        airfieldHeight: 300,
     }));
     // airfields.push(new Airfield({
     //     airfieldPosX: 70,
@@ -29,9 +30,35 @@ function draw() {
 
     });
 
-
-
-
-
 }
 
+function keyPressed(){
+    
+    // if(airfields[0].planes.forEach((plane,index) === currentKey)){
+    //     console.log(index);
+    // }
+
+    // if(currentKey == airfields[0].planes[currentKey])
+    // console.log(key);
+    // console.log(currentKey);
+    
+     switch(key){
+        case "0": currentKey = 0; break;
+        case "1": currentKey = 1; break;
+        case "2": currentKey = 2; break;
+        case "3": currentKey = 3; break;
+        case "4": currentKey = 4; break;
+        case "5": currentKey = 5; break;
+        case "6": currentKey = 6; break;
+        case "7": currentKey = 7; break;
+        case "8": currentKey = 8; break;
+        case "9": currentKey = 9; break;
+
+    }
+
+    if(key === 'k'){
+        console.log("hello");
+    }
+    console.log(currentKey);
+
+}

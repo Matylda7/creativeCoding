@@ -3,21 +3,26 @@ class Plane {
     constructor(obj) {
         this.posX = obj.posX ?? random(0, 500);
         this.posY = obj.posY ?? random(0, 500);
+
+        this.speed = obj.speed ?? random(0.8,2);
+        this.angle = obj.angle ?? random(0,360);
+
         this.apWidth = obj.apWidth ?? 15;
         this.apHeight = obj.apHeight ?? 20;
         this.tail = obj.tail ?? 4;
-        this.velX = obj.velX ?? random(-0.9, 0.9);
-        this.velY = obj.velY ?? random(-0.9, 0.9);
         this.alert = false;
+
+        this.velX = this.speed*cos(this.angle);
+        this.velY = this.speed*sin(this.angle);
     }
 
     render(id) {
         push()
         translate(this.posX, this.posY)
-        let angle = atan2(this.velY, this.velX);
+        // let angle = atan2(this.velY, this.velX);
         // ellipse(0,0,10,10);
-        text(id,10,-10)
-        rotate(angle)
+        text(id,10,-5)
+        rotate(this.angle)
         strokeWeight(1)
         beginShape()
 

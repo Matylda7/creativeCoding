@@ -1,8 +1,8 @@
 class Airfield {
     constructor(obj) {
-        this.numPlanes = obj.numPlanes ?? 3;
-        this.airfieldWidth = obj.airfieldWidth ?? 300;
-        this.airfieldHeight = obj.airfieldHeight ?? 300;
+        this.numPlanes = obj.numPlanes ?? 5;
+        this.airfieldWidth = obj.airfieldWidth ?? 500;
+        this.airfieldHeight = obj.airfieldHeight ?? 500;
         this.airfieldPosX = obj.airfieldPosX ?? 100;
         this.airfieldPosY = obj.airfieldPosY ?? 100;
         this.planes = [];
@@ -21,7 +21,7 @@ class Airfield {
     renderPlane() {
         push()
         translate(this.airfieldPosX, this.airfieldPosY);
-        this.planes.forEach( (plane, index) => plane.render(index));
+        this.planes.forEach( (plane, id) => plane.render(id));
         pop()
     }
 
