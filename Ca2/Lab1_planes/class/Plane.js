@@ -43,9 +43,19 @@ class Plane {
         
         pop()
     }
-  
+    updateVel(){
+        this.velX = this.speed*cos(this.angle);
+        this.velY = this.speed*sin(this.angle);
+    }
+    increaseSpeed(){
+        this.speed += 10;
+    }
+    turnLeft(){
+        
+    }
 
     move() {
+       
         this.posX = this.posX + this.velX;
         this.posY = this.posY + this.velY;
 

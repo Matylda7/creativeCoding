@@ -22,11 +22,11 @@ function setup() {
 function draw() {
     background(100, 170, 250);
     airfields.forEach(airfield => {
-        airfield.renderAirfield();
-       airfield.renderPlane();
-       airfield.checkDist();
-        airfield.movePlanes();
-        //airfield.checkPos();
+    airfield.renderAirfield();
+    airfield.renderPlane();
+    airfield.checkDist();
+    airfield.movePlanes();
+    //airfield.checkPos();
 
     });
 
@@ -56,9 +56,10 @@ function keyPressed(){
 
     }
 
-    if(key === 'k'){
-        console.log("hello");
+    if(key === 'W'){
+        airfields[0].planes[currentKey].increaseSpeed();
     }
+    airfields[0].planes[currentKey].updateVel();
     console.log(currentKey);
 
 }

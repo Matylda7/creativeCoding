@@ -1,6 +1,6 @@
 class Airfield {
     constructor(obj) {
-        this.numPlanes = obj.numPlanes ?? 5;
+        this.numPlanes = obj.numPlanes ?? 10;
         this.airfieldWidth = obj.airfieldWidth ?? 500;
         this.airfieldHeight = obj.airfieldHeight ?? 500;
         this.airfieldPosX = obj.airfieldPosX ?? 100;
