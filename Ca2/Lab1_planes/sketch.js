@@ -59,6 +59,13 @@ function keyPressed(){
     if(key === 'W'){
         airfields[0].planes[currentKey].increaseSpeed();
     }
+    if(key === 'S'){
+        airfields[0].planes[currentKey].decreaseSpeed();
+    }
+    if (key === 'LEFT_KEY'){
+        airfields[0].planes[currentKey].turnLeft();
+    }
+
     airfields[0].planes[currentKey].updateVel();
     console.log(currentKey);
 

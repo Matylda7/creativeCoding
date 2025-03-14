@@ -48,10 +48,16 @@ class Plane {
         this.velY = this.speed*sin(this.angle);
     }
     increaseSpeed(){
-        this.speed += 10;
+        this.speed += 0.5;
+    }
+    decreaseSpeed(){
+        this.speed -= 1;
+        if (this.speed < 0){
+            this.speed = 0.2;
+        }
     }
     turnLeft(){
-        
+        this.angle = this.angle-40;
     }
 
     move() {
