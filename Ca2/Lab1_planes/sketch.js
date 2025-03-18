@@ -23,9 +23,9 @@ function draw() {
     background(100, 170, 250);
     airfields.forEach(airfield => {
     airfield.renderAirfield();
-    airfield.renderPlane();
+    airfield.renderCraft();
     airfield.checkDist();
-    airfield.movePlanes();
+    airfield.moveCrafts();
     //airfield.checkPos();
 
     });
@@ -34,11 +34,11 @@ function draw() {
 
 function keyPressed(){
     
-    // if(airfields[0].planes.forEach((plane,index) === currentKey)){
+    // if(airfields[0].crafts.forEach((craft,index) === currentKey)){
     //     console.log(index);
     // }
 
-    // if(currentKey == airfields[0].planes[currentKey])
+    // if(currentKey == airfields[0].crafts[currentKey])
     // console.log(key);
     // console.log(currentKey);
     
@@ -57,16 +57,16 @@ function keyPressed(){
     }
 
     if(key === 'W'){
-        airfields[0].planes[currentKey].increaseSpeed();
+        airfields[0].crafts[currentKey].increaseSpeed();
     }
     if(key === 'S'){
-        airfields[0].planes[currentKey].decreaseSpeed();
+        airfields[0].crafts[currentKey].decreaseSpeed();
     }
     if (key === 'LEFT_KEY'){
-        airfields[0].planes[currentKey].turnLeft();
+        airfields[0].crafts[currentKey].turnLeft();
     }
 
-    airfields[0].planes[currentKey].updateVel();
+    airfields[0].crafts[currentKey].updateVel();
     console.log(currentKey);
 
 }

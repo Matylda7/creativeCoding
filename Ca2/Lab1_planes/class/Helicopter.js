@@ -1,4 +1,4 @@
-class Plane extends Craft {
+class Helicopter extends Craft {
 
     constructor(obj) {
 
@@ -16,15 +16,10 @@ class Plane extends Craft {
         text(id,10,-5)
         rotate(this.angle)
         strokeWeight(1)
-        beginShape()
-
-        vertex(0, 0);
-        vertex(-this.tail, -this.apWidth / 2)
-        vertex(this.apHeight - this.tail, 0)
-        vertex(-this.tail, this.apWidth / 2)
-
-        endShape(CLOSE);
-        line(0,0,this.apHeight-this.tail,0)
+        ellipse(0,0,20,15)
+        strokeWeight(2.5)
+        line(this.apHeight/2,0,-this.apHeight/2,0);
+        line(this.apWidth/2,this.apHeight/2,-this.apWidth/2,-this.apHeight/2);
         if (this.alert == true){
         noFill();
         stroke(255,0,0);
