@@ -1,9 +1,9 @@
 let fruits = [];
+let numOfFruit = 25;
 
 function setup() {
     createCanvas(500, 500);
 
-    fruits.push(new Fruit({}));
     
 }
    
@@ -11,9 +11,14 @@ function setup() {
 
 function draw() {
     background(100, 170, 250);
+   for (let i = 0; i < numOfFruit; i++) {
+        fruits.push(new Fruit({}));
+        fruits[i].render();
+        fruits[i].move();
+    }
    
-    fruits[0].render();
-
-
+    
 
 }
+
+
