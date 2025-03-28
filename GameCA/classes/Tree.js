@@ -28,8 +28,10 @@ class Tree {
 generateFruit() {
     for (let i = 0; i < this.numFruit; i++) {
         let r = random(0,this.radius);
-        let fruitX = this.posX + r * cos(this.angle);
-        let fruitY = this.posY + r * sin(this.angle);
+        let angle = random(0, TWO_PI);  // New random angle for each fruit
+        let fruitX = this.posX + r * cos(angle);
+        let fruitY = this.posY + r * sin(angle);
+        
         this.fruits.push(new Fruit({
             posX: fruitX,
             posY: fruitY,
@@ -41,7 +43,7 @@ generateFruit() {
 
 renderFruit() {
     push();
-    translate(width/2, height/3)
+    translate(this.posX, this.posY); // Translate to the tree's center
     this.fruits.forEach(fruit => {
         fruit.render();
     });

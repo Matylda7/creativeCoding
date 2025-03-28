@@ -17,7 +17,7 @@ class Fruit {
     render() {
       
        
-        ellipse(this.posX,this.posY,this.size)
+        ellipse(0,0,this.size)
       
     }
 
