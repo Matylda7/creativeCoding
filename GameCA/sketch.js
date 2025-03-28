@@ -1,17 +1,9 @@
-let fruits = [];
-let numOfFruit = 25;
-let posAppleArea;
+let trees = [];
 
 function setup() {
     createCanvas(500, 500);
-
-    for (let i = 0; i < numOfFruit; i++) {
-        fruits.push(new Fruit({}));
-        
-       // fruits[i].move();
-       console.log(fruits.length)
-    }
-    posAppleArea = new Tree({});
+    angleMode(DEGREES)
+    trees.push(new Tree({}));
     
 }
    
@@ -21,11 +13,13 @@ function setup() {
 function draw() {
     background(100, 170, 250);
   
-   for (let i = 0; i < fruits.length; i++) {
-        fruits[i].render();
-    }
+    trees.forEach(tree => {
+       
+        tree.renderFruit();
+        tree.renderTree();
+    })
 
-    posAppleArea.render();
+
 
 
     

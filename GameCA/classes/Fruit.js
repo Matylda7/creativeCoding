@@ -1,10 +1,10 @@
 class Fruit {
     constructor(obj){
-        this.radius = obj.radius ?? 30;
+       
         this.angle = random(0,360);
 
-        this.posX = obj.radius * cos(this.angle);
-        this.posY = obj.radius * sin(this.angle);
+        this.posX = obj.posX ?? random(0, 500);
+        this.posY = obj.posY ?? random(0, 500);
 
        
 
@@ -14,11 +14,11 @@ class Fruit {
         this.gravity = obj.gravity ?? 0.1;
     }
 
-    renderApple() {
-        push()
-        translate(this.PosX, this.PosY);
-        this.crafts.forEach( (craft, id) => craft.render(id));
-        pop()
+    render() {
+      
+       
+        ellipse(this.posX,this.posY,this.size)
+      
     }
 
     move(){
