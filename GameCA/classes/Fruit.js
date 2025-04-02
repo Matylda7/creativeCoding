@@ -1,49 +1,39 @@
 class Fruit {
-    constructor(obj){
+  constructor(obj) {
+    // this.angle = random(0,360);
+
+    this.posX = obj.posX ?? random(0, 500);
+    this.posY = obj.posY ?? random(0, 500);
+
+    this.speed = obj.speed ?? random(0, 1);
+    this.size = obj.size ?? random(15, 20);
+
+    this.gravity = obj.gravity ?? 0.1;
+  }
+
+  render() {
+    ellipse(this.posX, this.posY, this.size);
+  }
+
+  move() {
+    // Adding speed
+    this.posY += this.speed;
+
+    // Adding gravity
+    this.speed += this.gravity;
+
+    if (this.posY > height) { 
        
-        this.angle = random(0,360);
-
-        this.posX = obj.posX ?? random(0, 500);
-        this.posY = obj.posY ?? random(0, 500);
-
-       
-
-        this.speed = obj.speed ?? random(0,1);
-        this.size = obj.size ?? random(15,20);
-
-        this.gravity = obj.gravity ?? 0.1;
+        this.speed *= -0.7; 
     }
-
-    render() {
-      
-       
-        ellipse(0,0,this.size)
-      
-    }
-
-    move(){
-        //adding speed
-        this.posY = this.posY + this.speed;
-
-        //adding gravity
-        this.speed = this.speed + this.gravity;
-        
-        if (this.posY > height) { 
-            this.speed = this.speed * -0.3;  
-          } 
-
-    }
-
-
+}
+  
 }
 
 //steps to do
 
 //make balls spawn in a circle (make it so that they are always within a radius from the center)
 // to make circle do: x = radius * cos(angle), y = radius * sin(angle)
-
-
-
 
 //to do timing count in 5 seconds, each apple has a random num from 1-5, so that they fall in a random pattern, one apple falls at a time.
 

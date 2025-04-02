@@ -7,7 +7,7 @@ class Tree {
         this.posY = obj.posY ?? height/3;
 
         this.fruits = [];
-        this.numFruit = obj.numFruit ?? 10;
+        this.numFruit = obj.numFruit ?? 2;
 
         this.generateFruit();
 
@@ -27,14 +27,12 @@ class Tree {
 
 generateFruit() {
     for (let i = 0; i < this.numFruit; i++) {
-        let r = random(0,this.radius);
-        let angle = random(0, TWO_PI);  // New random angle for each fruit
-        let fruitX = this.posX + r * cos(angle);
-        let fruitY = this.posY + r * sin(angle);
+
+        
         
         this.fruits.push(new Fruit({
-            posX: fruitX,
-            posY: fruitY,
+            posX: random(-this.radius,this.radius),
+            posY: random(-this.radius, this.radius),            
         }));
    
       
@@ -48,6 +46,12 @@ renderFruit() {
         fruit.render();
     });
     pop();
+}
+
+dropFruit(){
+    this.fruits.forEach(fruit => {
+        fruit.move();
+    });
 }
 
 // to make circle do: x = radius * cos(angle), y = radius * sin(angle)
