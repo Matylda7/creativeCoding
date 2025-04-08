@@ -1,35 +1,55 @@
 class Fruit {
   constructor(obj) {
-    this.posX = obj.posX ?? random(0, 500);
-    this.posY = obj.posY ?? random(0, 500);
+    this.startX = obj.startX ?? random(width);
+    this.startY = obj.startY ?? random(height);
+    this.x = this.startX;
+    this.y = this.startY;
 
-    this.speed = obj.speed ?? random(0, 1);
+    this.speed = obj.speed ?? 0;
     this.size = obj.size ?? random(15, 20);
 
     this.gravity = obj.gravity ?? 0.1;
+    this.falling = false;
+    // Future: this.rotationAngle = 0; this.rotationSpeed = random(-0.1, 0.1);
   }
 
-
-
-
-  render() {
-    ellipse(this.posX, this.posY, this.size);
+  fall() {
+    //start falling if not falling already
+  if(!this.falling){
+    this.falling = true;
+    this.speed = 0; //resetting speed at start of fall
+    this.x = this.startX;
+    this.y = this.startY;
   }
-
-  move() {
-    // Adding speed
-    this.posY += this.speed;
-
-    // Adding gravity
+}
+move(){
+  if(this.falling){
     this.speed += this.gravity;
+    this.y += this.speed;
+  }
+}
+reset() {
+  this.falling = false;
+  this.x = this.startX;
+  this.y = this.startY;
+  this.speed = 0;
+}
 
-    if (this.posY > height) { 
-       
-        this.speed *= -0.7; 
-    }
+isOffScreen() {
+  return this.y > height + this.size / 2; // Check if below screen
 }
-  
+
+
+render() {
+  // Only draw if falling 
+  if (this.falling) {
+    fill(255, 0, 0); 
+    noStroke();
+    ellipse(this.x, this.y, this.size, this.size);
+  }
 }
+}
+
 
 //steps to do
 
