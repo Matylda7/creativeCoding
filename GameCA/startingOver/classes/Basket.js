@@ -9,17 +9,25 @@ class Basket {
       }
 
        render(){
-        fill(139, 69, 19); 
+        fill(101, 67, 33); 
         noStroke();
-        rect(this.posX, this.posY, this.w, this.h, 5); //last parameter rounds corners
-      }
+        push();
+        translate(this.posX, this.posY); 
+        beginShape();
+        vertex(0, 0);          // Top-left corner
+        vertex(80, 0);         // Top-right corner
+        bezierVertex(70, 40, 45, 40, 45, 40); // Curve to the middle
+        bezierVertex(25, 40, 5, 40, 0, 0);  // Curve back to the top left
+        endShape(CLOSE);
+        pop(); 
+}
 
       move() {
-        if (keyIsDown(65)) { // A 
+        if (keyIsDown(LEFT_ARROW)) { // A 
           this.posX -= this.speed;
           console.log('moving left');
         }
-        if (keyIsDown(68)) { // D 
+        if (keyIsDown(RIGHT_ARROW)) { // D 
           this.posX += this.speed;
           console.log("moving right")
         }
