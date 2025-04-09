@@ -14,7 +14,6 @@ class Tree {
         this.numFruit = obj.numFruit ?? 30;
         this.fallingFruit = -1; //index of currently falling fruit (-1 means no fruit are currently falling)
         this.nextFruit = 0;//index of next fruit to drop
-        this.timer;
         this.delay = 1000; //in miliseconds
         this.lastDropTime = -this.delay; //first drops immediately
 
